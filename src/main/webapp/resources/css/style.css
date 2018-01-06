@@ -1,0 +1,42 @@
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
+
+.p-t-xs{
+	padding-top: 2px;
+}
+
+.text-muted {
+	margin: 20px 0;
+}
+
+#content {
+	padding-top: 50px;
+}
+
+@font-face {
+	font-family: 'Glyphicons Halflings';
+	src: url("#{resource['fonts/glyphicons-halflings-regular.eot']}");
+	src: url("#{resource['fonts/glyphicons-halflings-regular.eot']}?#iefix")
+		format('embedded-opentype'),
+		url("#{resource['fonts/glyphicons-halflings-regular.woff2']}") format('woff2'),
+		url("#{resource['fonts/glyphicons-halflings-regular.woff']}") format('woff'),
+		url("#{resource['fonts/glyphicons-halflings-regular.ttf']}") format('truetype'),
+		url("#{resource['fonts/glyphicons-halflings-regular.svg']}#glyphicons_halflingsregular")
+		format('svg');
+}

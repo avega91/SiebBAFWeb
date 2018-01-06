@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title>SIEB</title>
+</h:head>
+<h:body>
+	<ui:composition>
+		<!-- <b:form id="loginForm">
+			<b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
+				label="Username" value="#{loginBean.username}" />
+			<b:message for="@previous" />
+			<b:inputSecret id="passwordDiv" fieldId="j_password"
+				name="j_password" label="Password" value="#{loginBean.password}" />
+			<b:message for="passwordDiv" />
+			<b:commandButton value="Entrar" onclick="loginBean.validarUsuario()"
+				look="primary" />
+		</b:form> -->
+
+		<div class="sign-overlay"></div>
+		<div class="signpanel"></div>
+
+		<div class="panel signin">
+			<div class="panel-heading" style="padding-bottom: 0px;">
+				<div style="margin: auto; text-align: center; margin-bottom: 20px;">
+					<!-- <img src="img/logo-baf-horizontal-neg.svg" style="width: 150px;"> -->
+					<h:graphicImage library="img" name="logo-baf-horizontal-neg.svg" style="width: 150px;" />
+				</div>
+				<h1>
+					Ejecutivo <span>Bancario</span>
+				</h1>
+				<h4 class="panel-title" style="color: #b6bbe6;">Bienvenido</h4>
+				<div class="text-center">
+					<p style="color: #969696">Entra usando tu huella dactilar</p>
+				</div>
+			</div>
+
+			<h:form>
+				<div id="autenticacion" class="accordion">
+					<div class="panel">
+						<a id="aut-huella" data-toggle="collapse"
+							data-parent="#autenticacion" href="#huella">
+							<div class="fingerprint-cont text-center">
+								<div class="fingerprint-border">
+									<h:graphicImage library="img" name="fingerprint-icon.svg"
+										style="max-width: 100px;" styleClass="fingerprint" />
+								</div>
+								<div class="mensajes-error text-center collapse">
+									<p id="mensaje-login-1">
+										<i class="fa fa-warning"></i> Autenticación fallida
+									</p>
+								</div>
+							</div>
+						</a>
+
+						<div id="huella" class="panel-collapse collapse" role="tabpanel">
+							<div class="form-group mb10">
+								<div class="input-group">
+									<span class="input-group-addon"> <i
+										class="glyphicon glyphicon-user"></i>
+									</span> 
+									<!-- <input type="text" placeholder="Tu usuario" /> -->
+									<h:inputText styleClass="form-control" a:placeholder="Tu usuario" value="#{loginBean.username}" />
+								</div>
+							</div>
+							<div class="form-group">
+								<a data-toggle="modal" data-target="#processing-modal"> 
+								<h:commandButton type="submit" action="#{loginBean.validarUsuario()}" value="Entrar" styleClass="btn btn-success btn-quirk btn-block" />
+									<!-- <button class="btn btn-success btn-quirk btn-block">Entrar</button> -->
+								</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="or">O</div>
+					<div class="panel">
+						<a id="aut-contraseña" data-toggle="collapse"
+							data-parent="#autenticacion" href="#contrasena">
+							<button class="btn  btn-quirk btn-credenciales btn-block"
+								style="margin-bottom: 10px;">Autenticar con Contraseña</button>
+						</a>
+						<div id="contrasena" class="panel-collapse collapse"
+							role="tabpanel">
+							<div class="form-group mb10">
+								<div class="input-group">
+									<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i> </span> 
+									<!-- <input type="text" class="form-control" placeholder="Tu usuario" /> -->
+									<h:inputText styleClass="form-control" a:placeholder="Tu usuario" value="#{loginBean.username}" />
+								</div>
+							</div>
+							<div class="form-group nomargin">
+								<div class="input-group">
+									<span class="input-group-addon"> <i class="glyphicon glyphicon-lock"></i></span> 
+									<!-- <input type="password" class="form-control" placeholder="Tu contraseña" /> -->
+									<h:inputSecret styleClass="form-control" a:placeholder="Tu contraseña" value="#{loginBean.password}" />
+								</div>
+							</div>
+							<div>
+								<a href="#" class="forgot">¿Olvidaste tu contraseña?</a>
+							</div>
+							<div class="form-group">
+								<a href="">
+									<h:commandButton type="submit" action="#{loginBean.validarUsuario()}" value="Entrar" styleClass="btn btn-success btn-quirk btn-block">
+										<f:ajax execute="@form" render="@form"></f:ajax>
+									</h:commandButton>
+								</a>
+							</div>
+							<h:panelGroup styleClass="mensajes-error text-center" rendered="#{loginBean.passwordIncorrecto}">
+								<p id="mensaje-login-1">
+									<i class="fa fa-warning"></i> Contraseña Incorrecta
+								</p>
+							</h:panelGroup>
+						</div>
+					</div>
+				</div>
+			</h:form>
+
+			<hr class="invisible" />
+			<div class="form-group">
+				<a href="#" class="btn btn-default btn-quirk btn-stroke btn-stroke-thin btn-block btn-sign">Ejecutivo nuevo</a>
+			</div>
+		</div>
+	</ui:composition>
+</h:body>
+</html>
