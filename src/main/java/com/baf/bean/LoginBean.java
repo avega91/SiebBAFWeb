@@ -19,21 +19,16 @@ import com.baf.util.ValidacionUsuarios;
 public class LoginBean implements Serializable {
 	static final long serialVersionUID = 1L;
 	final static Logger logger = Logger.getLogger(LoginBean.class);
+	
+	final String INICIO_PAGE_REDIRECT = "content/inicio.xhtml?faces-redirect=true";
+	final String LOGIN_PAGE_REDIRECT = "index?faces-redirect=true";
 
 	String username;
 	String password;
 	
 //	banderas
-	boolean passwordIncorrecto;
+	boolean passwordIncorrecto = false;
 	
-
-	public boolean isPasswordIncorrecto() {
-		return passwordIncorrecto;
-	}
-
-	public void setPasswordIncorrecto(boolean passwordIncorrecto) {
-		this.passwordIncorrecto = passwordIncorrecto;
-	}
 
 	public String getUsername() {
 		return username;
@@ -50,6 +45,14 @@ public class LoginBean implements Serializable {
 	public String getPassword() {
 		return password;
 	}
+	
+	public boolean isPasswordIncorrecto() {
+		return passwordIncorrecto;
+	}
+
+	public void setPasswordIncorrecto(boolean passwordIncorrecto) {
+		this.passwordIncorrecto = passwordIncorrecto;
+	}
 
 	// Validar en LDAP las credenciales del usuario
 	public String validarUsuario() {
@@ -61,13 +64,13 @@ public class LoginBean implements Serializable {
 				if (objValidacion.isUsuarioAutentico(this.username, this.password)) {
 					logger.debug("Ingreso exitoso");
 					crearMensaje("info", "Bienvenido");
-					return "content/inicio.xhtml?faces-redirect=true";
+					return INICIO_PAGE_REDIRECT;
 				}
 			} catch (Exception ex) {
 				logger.error(ex.getMessage());
 				ex.printStackTrace();
 			}
-			logger.debug("El usuario " + this.username + "no esta registrado");
+			logger.debug("El usuario " + this.username + " no esta registrado");
 			passwordIncorrecto = true;
 			crearMensaje("error", "Usuario o password incorrectos");
 			return null;
@@ -93,7 +96,7 @@ public class LoginBean implements Serializable {
 
 	public String cerrarSesion() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "index?faces-redirect=true";
+		return LOGIN_PAGE_REDIRECT;
 	}
 	
 	private boolean checkSession() {

@@ -14,8 +14,10 @@ public class InicioBean implements Serializable {
 	static final long serialVersionUID = 1L;
 	static final Logger logger = Logger.getLogger(InicioBean.class);
 	
+	static final String LOGOUT_PAGE_REDIRECT = "content/timeout.xhtml?faces-redirect=true";
+	
 	public String cerrarSesion() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return "/index?faces-redirect=true";
+		return LOGOUT_PAGE_REDIRECT;
 	}
 }

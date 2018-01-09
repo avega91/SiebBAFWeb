@@ -10,4 +10,8 @@
         <pattern value="/" />
         <view-id value="/index.xhtml" />
     </url-mapping>
+    <url-mapping id="timeout">
+        <pattern value="/timeout" />
+        <view-id value="/content/timeout.xhtml" />
+    </url-mapping>
 </pretty-config>

@@ -60,9 +60,7 @@
 						<div id="huella" class="panel-collapse collapse" role="tabpanel">
 							<div class="form-group mb10">
 								<div class="input-group">
-									<span class="input-group-addon"> <i
-										class="glyphicon glyphicon-user"></i>
-									</span> 
+									<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i></span>
 									<!-- <input type="text" placeholder="Tu usuario" /> -->
 									<h:inputText styleClass="form-control" a:placeholder="Tu usuario" value="#{loginBean.username}" />
 								</div>
@@ -83,8 +81,7 @@
 							<button class="btn  btn-quirk btn-credenciales btn-block"
 								style="margin-bottom: 10px;">Autenticar con Contraseña</button>
 						</a>
-						<div id="contrasena" class="panel-collapse collapse"
-							role="tabpanel">
+						<div id="contrasena" class="#{loginBean.passwordIncorrecto ? 'panel-collapse collapse in' : 'panel-collapse collapse'}" role="tabpanel">
 							<div class="form-group mb10">
 								<div class="input-group">
 									<span class="input-group-addon"> <i class="glyphicon glyphicon-user"></i> </span> 
@@ -104,7 +101,7 @@
 							</div>
 							<div class="form-group">
 								<a href="">
-									<h:commandButton type="submit" action="#{loginBean.validarUsuario()}" value="Entrar" styleClass="btn btn-success btn-quirk btn-block">
+									<h:commandButton type="submit" action="#{loginBean.validarUsuario}" value="Entrar" styleClass="btn btn-success btn-quirk btn-block">
 										<f:ajax execute="@form" render="@form"></f:ajax>
 									</h:commandButton>
 								</a>
